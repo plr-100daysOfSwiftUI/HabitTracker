@@ -21,7 +21,14 @@ class Habits: ObservableObject {
 		
 	init() {
 		
-		// TODO: load from user defaults
+		if let data = UserDefaults.standard.data(forKey: "Habits") {
+			let decoder = JSONDecoder()
+			if let habits = try? decoder.decode([Activity].self, from: data) {
+				self.items = habits
+				return
+			}
+		}
+		
 		self.items = []
 	}
 	
