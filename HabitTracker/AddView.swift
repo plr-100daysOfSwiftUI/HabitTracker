@@ -26,7 +26,9 @@ struct AddView: View {
 				let activity = Activity(title: self.title, description: self.description)
 				self.habits.items.append(activity)
 				self.presentationMode.wrappedValue.dismiss()
-			})
+			}
+			.disabled(title.isEmpty)
+			)
 		}
 	.padding()
 	}
