@@ -13,6 +13,15 @@ struct ActivityView: View {
 	@ObservedObject var habits: Habits
 	var activity: Activity
 	
+	fileprivate func incrementCounter() {
+		var newActivity = self.activity
+		newActivity.incrementCounter()
+		
+		if let index = self.habits.items.firstIndex(of: self.activity) {
+			self.habits.items[index] = newActivity
+		}
+	}
+	
 	var body: some View {
 		VStack {
 			Text(activity.title)
