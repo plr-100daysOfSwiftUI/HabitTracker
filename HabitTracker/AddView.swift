@@ -15,6 +15,10 @@ struct AddView: View {
 	@State private var title = ""
 	@State private var description = ""
 	
+	private var buttonDisabled: Bool {
+		title.count < 3 || description.count < 3
+	}
+
 	var body: some View {
 		NavigationView {
 			Form {
@@ -27,7 +31,7 @@ struct AddView: View {
 				self.habits.items.append(activity)
 				self.presentationMode.wrappedValue.dismiss()
 			}
-			.disabled(title.isEmpty)
+			.disabled(buttonDisabled)
 			)
 		}
 	.padding()
