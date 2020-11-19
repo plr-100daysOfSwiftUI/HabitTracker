@@ -41,7 +41,6 @@ struct ContentView: View {
 	}
 	
 	func removeItems(at offsets: IndexSet) {
-		// TODO: This throws a fatal error
 		habits.items.remove(atOffsets: offsets)
 	}
 	
