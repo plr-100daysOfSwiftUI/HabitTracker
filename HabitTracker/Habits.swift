@@ -10,9 +10,15 @@ import Foundation
 
 class Habits: ObservableObject {
 		
-	@Published var items = [Activity]()
-	// TODO: make a setter to save to user defaults
-	
+	@Published var items = [Activity]() {
+		didSet {
+			let encoder = JSONEncoder()
+			if let encoded = try? encoder.encode(items) {
+				UserDefaults.standard.set(encoded, forKey: "Habits")
+			}
+		}
+	}
+		
 	init() {
 		
 		// TODO: load from user defaults
