@@ -29,19 +29,15 @@ struct ActivityView: View {
 				.padding()
 			Text(activity.description)
 			.padding()
-			Button("Increment") {
-				
-				var newActivity = self.activity
-				newActivity.incrementCounter()
-				
-				if let index = self.habits.items.firstIndex(of: self.activity) {
-					self.habits.items[index] = newActivity
-				}
-
+			Button(action: incrementCounter) {
+				Image(systemName: "\(activity.counter).circle.fill")
+					.resizable()
+					.scaledToFit()
+					.frame(width: 96.0, height: 96.0)
+					.foregroundColor(.green)
 			}
 			.padding()
-			Text("performed \(activity.counter) times")
-			
+
 			Spacer()
 		}
 	}
