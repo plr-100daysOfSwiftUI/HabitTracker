@@ -33,6 +33,11 @@ struct ActivityView: View {
 				Image(systemName: "\(activity.counter).circle.fill")
 					.resizable()
 					.scaledToFit()
+					.overlay(
+						Circle()
+							.stroke(
+								Color.secondary, lineWidth: 1.5
+							))
 					.frame(width: 96.0, height: 96.0)
 					.foregroundColor(.green)
 			}
